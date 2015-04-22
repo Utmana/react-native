@@ -23,6 +23,7 @@ var About = require('./lib/components/about');
 var Menu = React.createClass({
   transitionTo(route) {
     this.props.menuActions.close();
+    console.log(this.props.navigator);
     this.props.navigator.push(route);
   },
   render() {
@@ -30,6 +31,10 @@ var Menu = React.createClass({
       <View style={styles.menu}>
         <Text
           style={styles.item}
+          onPress={this.transitionTo.bind({}, {
+            title: 'Challenges',
+            component: Challenges
+          })}
          >
           Challenges
         </Text>
@@ -48,16 +53,20 @@ var Menu = React.createClass({
 
 var UtmanaProject = React.createClass({
   render() {
-    return (
-      <SideMenu menu={<Menu />}>
+    var Navigator = (
         <NavigatorIOS
-          style={styles.container}
-          initialRoute={{
-            title: 'Challenges',
-            component: Challenges
-          }}
-        >
+            style={styles.container}
+            initialRoute={{
+              title: 'Challenges',
+              component: Challenges
+            }}
+          >
         </NavigatorIOS>
+      );
+
+    return (
+      <SideMenu menu={<Menu navigator={Navigator}/>}>
+        <About/>
       </SideMenu>
     );
   }
