@@ -8,37 +8,50 @@ var UtmaningPage = require('../components/UtmaningDetails');
 var challenges = require('../lib/challenges');
 
 var {
+  ListView,
   StyleSheet,
-  ScrollView
+  Text,
+  View
 } = React;
 
 
 var HomePage = React.createClass({
 
   getInitialState: function() {
-    challenges.getLatest().then(function(challenges){
-      this.setState({ challenges: challenges });
-    });
-    return {challenges: []};
+    challenges
+      .getLatest()
+      .then((result) => {
+        this.setState({
+          challenges: this.state.challenges.cloneWithRows(result)
+        });
+      });
+
+    return {
+      challenges: new ListView.DataSource({
+        rowHasChanged: (row1, row2) => row1 !== row2,
+      })
+    };
   },
 
   goToUtmaning: function(utmaningData) {
     this.props.toRoute({
-      name: "Utmaning",
+      name: 'Utmaning',
       component: UtmaningPage,
       data: utmaningData
     });
   },
 
-  render() {
-    var Utmanings = this.state.challenges.map((utmaningData) => {
-      return <Utmaning {...utmaningData} onPress={this.goToRoute} goToUtmaning={this.goToUtmaning} />;
-    });
+  renderRow(challenge) {
+    return <Utmaning {...challenge} />;
+  },
 
+  render() {
     return (
-      <ScrollView style={styles.container}>
-        {Utmanings}
-      </ScrollView>
+      <ListView
+        dataSource={this.state.challenges}
+        renderRow={this.renderRow}
+        style={styles.listView}
+      />
     )
   }
 });
@@ -48,6 +61,10 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f8fa'
+  },
+  listView: {
+    paddingTop: 20,
+    backgroundColor: '#F5FCFF',
   }
 });
 

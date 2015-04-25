@@ -12,27 +12,29 @@ var {
 } = React;
 
 var Utmaning = React.createClass({
-  
+
   goToUtmaning: function() {
     this.props.goToUtmaning(this.props);
   },
 
   render() {
     var {
-      text,
-      user
+      _id,
+      image,
+      summary,
+      title
     } = this.props;
+
 
     return (
       <TouchableHighlight underlayColor="transparent" onPress={this.goToUtmaning}>
         <View style={styles.utmaningContainer}>
-          <Image source={{uri: user.avatar}} style={styles.avatar} />
+          <Image source={{uri: image}} style={styles.avatar} />
           <View style={styles.rightContainer}>
             <View style={styles.userContainer}>
-              <Text style={styles.name}>{user.name}</Text>
-              <Text style={styles.username}>@{user.username}</Text>
+              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.summary}>{summary}</Text>
             </View>
-            <Text style={styles.text}>{text}</Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -60,13 +62,13 @@ var styles = StyleSheet.create({
   userContainer: {
     flexDirection: 'row'
   },
-  username: {
+  summary: {
     marginLeft: 4,
     fontSize: 13,
     color: '#8999a5',
     marginTop: 2
   },
-  name: {
+  title: {
     fontWeight: '600',
     fontSize: 15
   },
