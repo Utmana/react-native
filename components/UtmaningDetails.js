@@ -2,6 +2,8 @@
 
 var React = require('react-native');
 
+var challenges = require('../lib/challenges');
+
 var {
   StyleSheet,
   Text,
@@ -12,23 +14,34 @@ var {
 } = React;
 
 var UtmaningDetails = React.createClass({
+  componentWillMount() {
+    this.setState({
+      challenge: this.props.data
+    });
+  },
+
+  componentDidMount() {
+    challenges
+      .get(this.state.challenge._id)
+      .then((challenge) => {
+        this.setState({
+          challenge: challenge
+        });
+      })
+      .done();
+  },
 
   render() {
-    var {
-      _id,
-      image,
-      summary,
-      title
-    } = this.props.data;
+    var challenge = this.state.challenge;
 
     return (
       <ScrollView>
         <View style={styles.utmaningContainer}>
           <View style={styles.userContainer}>
-            <Image source={{uri: image}} style={styles.avatar} />
+            <Image source={{uri: challenge.image}} style={styles.avatar} />
             <View style={styles.rightContainer}>
-              <Text style={styles.title}>{title}</Text>
-              <Text style={styles.summary}>{summary}</Text>
+              <Text style={styles.title}>{challenge.title}</Text>
+              <Text style={styles.summary}>{challenge.summary}</Text>
             </View>
           </View>
         </View>
