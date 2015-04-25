@@ -16,9 +16,10 @@ var {
 var HomePage = React.createClass({
 
   getInitialState: function() {
-    return {
-      utmanings: challenges.getLatest()
-    }
+    challenges.getLatest().then(function(challenges){
+      this.setState({ challenges: challenges });
+    });
+    return {challenges: []};
   },
 
   goToUtmaning: function(utmaningData) {
@@ -30,7 +31,7 @@ var HomePage = React.createClass({
   },
 
   render() {
-    var Utmanings = this.state.utmanings.map((utmaningData) => {
+    var Utmanings = this.state.challenges.map((utmaningData) => {
       return <Utmaning {...utmaningData} onPress={this.goToRoute} goToUtmaning={this.goToUtmaning} />;
     });
 
