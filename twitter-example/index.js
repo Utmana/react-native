@@ -2,7 +2,7 @@
 
 var React = require('react-native');
 
-var Router = require('react-native-router');
+var Router = require('../index');
 
 var HomePage = require('./pages/HomePage');
 var BackButton = require('./components/BackButton');
@@ -12,7 +12,6 @@ var AddPeople = require('./components/icons/AddPeople');
 var {
   StyleSheet,
   View,
-  AppRegistry,
 } = React;
 
 var styles = StyleSheet.create({
@@ -29,7 +28,7 @@ var firstRoute = {
   leftCorner: AddPeople
 };
 
-var UtmanaProject = React.createClass({
+var TwitterApp = React.createClass({
   render() {
     return (
       <Router 
@@ -43,4 +42,4 @@ var UtmanaProject = React.createClass({
 });
 
 
-AppRegistry.registerComponent('UtmanaProject', () => UtmanaProject);
+module.exports = TwitterApp;
