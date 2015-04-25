@@ -15,26 +15,21 @@ var UtmaningDetails = React.createClass({
 
   render() {
     var {
-      text,
-      user
+      _id,
+      image,
+      summary,
+      title
     } = this.props.data;
 
     return (
       <ScrollView>
         <View style={styles.utmaningContainer}>
           <View style={styles.userContainer}>
-            <Image source={{uri: user.avatar}} style={styles.avatar} />
+            <Image source={{uri: image}} style={styles.avatar} />
             <View style={styles.rightContainer}>
-              <Text style={styles.name}>{user.name}</Text>
-              <Text style={styles.username}>@{user.username}</Text>
+              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.summary}>{summary}</Text>
             </View>
-          </View>
-          <View style={styles.textContainer}>
-            <Text style={styles.text}>{text}</Text>
-          </View>
-          <View style={styles.reutmaningContainer}>
-            <Text style={styles.rtBold}>1</Text>
-            <Text style={styles.rtText}>RETWEET</Text>
           </View>
         </View>
       </ScrollView>

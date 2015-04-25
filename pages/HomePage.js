@@ -42,7 +42,7 @@ var HomePage = React.createClass({
   },
 
   renderRow(challenge) {
-    return <Utmaning {...challenge} />;
+    return <Utmaning {...challenge} goToUtmaning={this.goToUtmaning} />;
   },
 
   render() {
