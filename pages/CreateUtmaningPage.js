@@ -20,11 +20,11 @@ var RightCorner = React.createClass({
 });
 
 
-var FindPeoplePage = React.createClass({
+var CreateUtmaningPage = React.createClass({
   render() {
     return (
       <View style={styles.container}>
-        <Text>Find people!</Text>
+        <Text>Create new utmaning here!</Text>
       </View>
     )
   }
@@ -45,4 +45,4 @@ var styles = StyleSheet.create({
 });
 
 
-module.exports = FindPeoplePage;
+module.exports = CreateUtmaningPage;

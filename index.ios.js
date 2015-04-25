@@ -7,7 +7,7 @@ var Router = require('react-native-router');
 var HomePage = require('./pages/HomePage');
 var BackButton = require('./components/BackButton');
 var SearchAndCompose = require('./components/icons/SearchAndCompose');
-var AddPeople = require('./components/icons/AddPeople');
+var CreateUtmaning = require('./components/icons/CreateUtmaning');
 
 var {
   StyleSheet,
@@ -24,9 +24,9 @@ var styles = StyleSheet.create({
 
 
 var firstRoute = {
-  name: 'Home',
+  name: 'Utmaningar',
   component: HomePage,
-  leftCorner: AddPeople
+  leftCorner: CreateUtmaning
 };
 
 var UtmanaProject = React.createClass({
@@ -36,7 +36,6 @@ var UtmanaProject = React.createClass({
         firstRoute={firstRoute} 
         headerStyle={styles.header}
         backButtonComponent={BackButton}
-        rightCorner={SearchAndCompose}
       />
     )
   }

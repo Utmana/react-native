@@ -6,11 +6,12 @@ var {
   StyleSheet,
   Text,
   Image,
+  Button,
   ScrollView,
   View,
 } = React;
 
-var TweetBig = React.createClass({
+var UtmaningDetails = React.createClass({
 
   render() {
     var {
@@ -20,7 +21,7 @@ var TweetBig = React.createClass({
 
     return (
       <ScrollView>
-        <View style={styles.tweetContainer}>
+        <View style={styles.utmaningContainer}>
           <View style={styles.userContainer}>
             <Image source={{uri: user.avatar}} style={styles.avatar} />
             <View style={styles.rightContainer}>
@@ -31,7 +32,7 @@ var TweetBig = React.createClass({
           <View style={styles.textContainer}>
             <Text style={styles.text}>{text}</Text>
           </View>
-          <View style={styles.retweetContainer}>
+          <View style={styles.reutmaningContainer}>
             <Text style={styles.rtBold}>1</Text>
             <Text style={styles.rtText}>RETWEET</Text>
           </View>
@@ -42,7 +43,7 @@ var TweetBig = React.createClass({
 });
 
 var styles = StyleSheet.create({
-  retweetContainer: {
+  reutmaningContainer: {
     margin: 10,
     paddingTop: 8,
     flexDirection: 'row',
@@ -60,7 +61,7 @@ var styles = StyleSheet.create({
     color: '#748999'
   },
 
-  tweetContainer: {
+  utmaningContainer: {
     backgroundColor: 'white',
     borderBottomWidth: 1,
     borderColor: '#DAE6F0',
@@ -104,4 +105,4 @@ var styles = StyleSheet.create({
 });
 
 
-module.exports = TweetBig;
+module.exports = UtmaningDetails;

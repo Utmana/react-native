@@ -2,7 +2,7 @@
 
 var React = require('react-native');
 
-var FindPeoplePage = require('../../pages/FindPeoplePage');
+var CreateUtmaningPage = require('../../pages/CreateUtmaningPage');
 
 var {
   StyleSheet,
@@ -13,30 +13,30 @@ var {
 
 var styles = StyleSheet.create({
   icon: {
-    width: 25,
-    height: 18,
-    marginTop: 5,
-    marginLeft: 8
+    width: 21,
+    height: 21,
+    marginTop: 4,
+    marginLeft: 15
   }
 });
 
-var AddPeopleIcon = React.createClass({
+var CreateUtmaningIcon = React.createClass({
 
   goToAddPage: function() {
     this.props.toRoute({
-      name: "Find people",
-      component: FindPeoplePage
+      name: "Create new",
+      component: CreateUtmaningPage
     });
   },
 
   render() {
     return (
       <TouchableHighlight underlayColor="transparent" onPress={this.goToAddPage}>
-        <Image source={require('image!add_people_icon')} style={styles.icon} />
+        <Image source={require('image!compose_icon')} style={styles.icon} />
       </TouchableHighlight>
     )
   }
 });
 
 
-module.exports = AddPeopleIcon;
+module.exports = CreateUtmaningIcon;

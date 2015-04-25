@@ -11,10 +11,10 @@ var {
   View,
 } = React;
 
-var Tweet = React.createClass({
+var Utmaning = React.createClass({
   
-  goToTweet: function() {
-    this.props.goToTweet(this.props);
+  goToUtmaning: function() {
+    this.props.goToUtmaning(this.props);
   },
 
   render() {
@@ -24,8 +24,8 @@ var Tweet = React.createClass({
     } = this.props;
 
     return (
-      <TouchableHighlight underlayColor="transparent" onPress={this.goToTweet}>
-        <View style={styles.tweetContainer}>
+      <TouchableHighlight underlayColor="transparent" onPress={this.goToUtmaning}>
+        <View style={styles.utmaningContainer}>
           <Image source={{uri: user.avatar}} style={styles.avatar} />
           <View style={styles.rightContainer}>
             <View style={styles.userContainer}>
@@ -41,7 +41,7 @@ var Tweet = React.createClass({
 });
 
 var styles = StyleSheet.create({
-  tweetContainer: {
+  utmaningContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
@@ -80,4 +80,4 @@ var styles = StyleSheet.create({
 });
 
 
-module.exports = Tweet;
+module.exports = Utmaning;
