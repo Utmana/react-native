@@ -1,12 +1,13 @@
 'use strict';
 
 var React = require('react-native');
+var GoalIcon = require('./icons/Goal');
 
 var {
   StyleSheet,
   Text,
   Image,
-  Button,
+  TouchableHighlight,
   ScrollView,
   View,
 } = React;
@@ -25,20 +26,54 @@ var UtmaningDetails = React.createClass({
       <ScrollView>
         <View style={styles.utmaningContainer}>
           <View style={styles.userContainer}>
-            <Image source={{uri: image}} style={styles.avatar} />
+            <GoalIcon />
             <View style={styles.rightContainer}>
               <Text style={styles.title}>{title}</Text>
-              <Text style={styles.summary}>{summary}</Text>
             </View>
           </View>
+          <View style={styles.textContainer}>
+            <Text style={styles.summary}>{summary}</Text>
+          </View>
+          <View style={styles.statsContainer}>
+            <Text style={styles.rtBold}>10</Text>
+            <Text style={styles.rtText}>ACCEPTERAT</Text>
+            <Text style={styles.rtBold}>3</Text>
+            <Text style={styles.rtText}>SLUTFÖRT</Text>
+            <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor="transparent">
+              <Text style={styles.buttonText}>Acceptera</Text>
+            </TouchableHighlight>
+          </View>
+
         </View>
+          <Text style={styles.helpText}>Om du väljer att acceptera utmaningen kommer du få en påminnelse om exakt 30 minuter. Då skall utmaningen vara utförd.</Text>
       </ScrollView>
     )
   }
 });
 
 var styles = StyleSheet.create({
-  reutmaningContainer: {
+  button: {
+    flex: 3,
+    backgroundColor: '#3fbf88',
+    height: 20,
+    marginBottom: 16
+  },
+  buttonText:{
+    color: 'white',
+    fontSize: 16,
+    paddingTop: 8,
+    paddingBottom: 8,
+    fontWeight: '600',
+    textAlign: 'center',
+    alignItems: 'center',
+
+  },
+  helpText: {
+    margin: 10,
+    paddingTop: 8,
+    color: '#666'
+  },
+  statsContainer: {
     margin: 10,
     paddingTop: 8,
     flexDirection: 'row',
@@ -53,7 +88,8 @@ var styles = StyleSheet.create({
   rtText: {
     fontSize: 14,
     fontWeight: '400',
-    color: '#748999'
+    color: '#748999',
+    paddingRight: 10
   },
 
   utmaningContainer: {
@@ -72,6 +108,7 @@ var styles = StyleSheet.create({
   userContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginTop: 8,
     flex: 1
   },
   textContainer: {
@@ -79,7 +116,7 @@ var styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'column'
   },
-  username: {
+  title: {
     fontSize: 13,
     color: '#8999a5',
     marginTop: 2
@@ -88,7 +125,7 @@ var styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 15
   },
-  text: {
+  summary: {
     marginTop: 5,
     fontSize: 17,
     fontWeight: '300'
