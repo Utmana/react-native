@@ -24,7 +24,8 @@ var HomePage = React.createClass({
         this.setState({
           challenges: this.state.challenges.cloneWithRows(result)
         });
-      });
+      })
+      .done();
 
     return {
       challenges: new ListView.DataSource({

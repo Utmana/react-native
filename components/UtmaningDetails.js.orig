@@ -39,13 +39,20 @@ var UtmaningDetails = React.createClass({
       <ScrollView>
         <View style={styles.utmaningContainer}>
           <View style={styles.userContainer}>
+<<<<<<< HEAD
             <GoalIcon />
             <View style={styles.rightContainer}>
+              <Text style={styles.title}>{title}</Text>
+=======
+            <Image source={{uri: challenge.image}} style={styles.avatar} />
+            <View style={styles.rightContainer}>
               <Text style={styles.title}>{challenge.title}</Text>
+              <Text style={styles.summary}>{challenge.summary}</Text>
+>>>>>>> 235c4269f9d7f5a6dec60c1e73991391cddbc85c
             </View>
           </View>
           <View style={styles.textContainer}>
-            <Text style={styles.summary}>{challenge.summary}</Text>
+            <Text style={styles.summary}>{summary}</Text>
           </View>
           <View style={styles.statsContainer}>
             <Text style={styles.rtBold}>10</Text>
