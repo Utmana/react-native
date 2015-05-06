@@ -2,7 +2,7 @@
 
 var React = require('react-native');
 var GoalIcon = require('./icons/Goal');
-
+var Button = require('./Button');
 var challenges = require('../lib/challenges');
 
 var {
@@ -32,6 +32,10 @@ var UtmaningDetails = React.createClass({
       .done();
   },
 
+  accept() {
+
+  },
+
   render() {
     var challenge = this.state.challenge;
 
@@ -52,9 +56,7 @@ var UtmaningDetails = React.createClass({
             <Text style={styles.rtText}>ACCEPTERAT</Text>
             <Text style={styles.rtBold}>3</Text>
             <Text style={styles.rtText}>SLUTFÖRT</Text>
-            <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor="transparent">
-              <Text style={styles.buttonText}>Acceptera</Text>
-            </TouchableHighlight>
+            <Button onPress={this.accept} text='Acceptera'/>
           </View>
 
         </View>
@@ -65,22 +67,6 @@ var UtmaningDetails = React.createClass({
 });
 
 var styles = StyleSheet.create({
-  button: {
-    flex: 3,
-    backgroundColor: '#3fbf88',
-    height: 20,
-    marginBottom: 16
-  },
-  buttonText:{
-    color: 'white',
-    fontSize: 16,
-    paddingTop: 8,
-    paddingBottom: 8,
-    fontWeight: '600',
-    textAlign: 'center',
-    alignItems: 'center',
-
-  },
   helpText: {
     margin: 10,
     paddingTop: 8,
