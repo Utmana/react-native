@@ -33,7 +33,7 @@ var UtmaningDetails = React.createClass({
   },
 
   accept() {
-
+    this.props.toBack();
   },
 
   render() {

@@ -24,7 +24,7 @@ var CreateUtmaningIcon = React.createClass({
 
   goToAddPage: function() {
     this.props.toRoute({
-      name: "Create new",
+      name: "Ny utmaning",
       component: CreateUtmaningPage
     });
   },

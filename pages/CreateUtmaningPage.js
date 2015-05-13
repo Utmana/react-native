@@ -3,23 +3,48 @@
 var React = require('react-native');
 var Button = require('../components/Button');
 var challenges = require('../lib/challenges');
+var t = require('tcomb-form-native');
 
 var {
   PickerIOS,
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight,
   View,
 } = React;
 
-var PickerItemIOS = PickerIOS.Item;
+var Form = t.form.Form;
+
+var Categories = t.enums({
+  V: 'Bättre värld',
+  I: 'Integration',
+  P: 'Personlig'
+});
+
+var Timeouts = t.enums({
+  10 : '10 minuter',
+  30 : '30 minuter',
+  60 : 'en timme',
+  120 : 'två timmar',
+  300 : 'fem timmar',
+  1440 : 'ett dygn',
+  10080 : 'en vecka',
+});
+
+// here we are: define your domain model
+var Model = t.struct({
+  title: t.Str,                 
+  summary: t.maybe(t.Str),      
+  //timeout: Timeouts,               
+  category: Categories           
+});
 
 var CreateUtmaningPage = React.createClass({
   getInitialState: function () {
     return {
       title: '',
       summary: '',
+      timeout: 30,
       category: {}
     };
   },
@@ -27,45 +52,43 @@ var CreateUtmaningPage = React.createClass({
   save() {
     challenges.create({
       title: this.state.title,
-      summary: this.state.summary
+      summary: this.state.summary,
+      timeout: this.state.timeout,
+      category: this.state.category,
     });
+    this.props.toBack();
   },
 
   render() {
-    var categories = [{
-      name: 'foo',
-      id: 1
-    }, {
-      name: 'bar',
-      id: 2
-    }, {
-      name: 'herp',
-      id: 3
-    }, {
-      name: 'derp',
-      id: 4
-    }];
+
+    var options = {
+      auto: 'placeholders', 
+      fields: { 
+        title: {
+          placeholder: 'Rubrik på utmaningen',
+          help:'T.ex. "Ge en av dina kollegor en kram när du går hem idag"',
+          error: 'Du måste ange rubrik'
+        },
+        summary: {
+          placeholder: 'Beskriv vad utmaningen går ut på',
+          multiline: 'true'
+        },
+        category: {
+          label: 'Typ av utmaning',
+          help: 'Välj hur denna utmaning gör något något bra'
+        }
+      }
+    };
 
     return (
       <View style={styles.container}>
-        <Text>Skapa nya utmaning här!</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder='Namn'
-          onChangeText={(text) => this.setState({title: text})}
+        <Form
+          ref='form'
+          type={Model}
+          value={this.state}
+          options={options}
         />
-        <TextInput
-          style={styles.textInput}
-          placeholder='Beskrivning'
-          onChangeText={(text) => this.setState({summary: text})}
-        />
-        <Text>Välj utmaningskategori</Text>
-        <PickerIOS
-          selectedValue={this.state.category}
-          onValueChange={(category) => this.setState({category: category})}>
-
-        </PickerIOS>
-        <Button onPress={this.save} text='Spara'/>
+        <Button onPress={this.save} style={styles.button} text='Spara' underlayColor='#99d9f4'/>
       </View>
     )
   }
@@ -75,13 +98,18 @@ var CreateUtmaningPage = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: 50,
+    padding: 10
   },
-  textInput: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1
+  button: {
+    height: 36,
+    backgroundColor: '#48BBEC',
+    borderColor: '#48BBEC',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
   }
 });
 

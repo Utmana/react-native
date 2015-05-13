@@ -8,6 +8,11 @@
   "dependencies": {
     "react-native": "^0.4.2",
     "react-native-router": "jonmorehouse/react-native-router",
-    "react-native-side-menu": "^0.2.3"
+    "react-native-side-menu": "^0.2.3",
+    "react-native-router": "^0.1.3",
+    "react-native-side-menu": "^0.2.3",
+    "tcomb": "^1.0.3",
+    "tcomb-form-native": "^0.1.7",
+    "tcomb-validation": "^1.0.4"
   }
 }
