@@ -31,13 +31,16 @@ var firstRoute = {
 
 var UtmanaProject = React.createClass({
   componentWillMount(){
+    var _this = this;
     notifications.startListen();
     notifications.onUtmaning(function(utmaning){
-      UtmanaProject.refs.router.openRoute({
-        name: 'Utmaning',
-        component: UtmaningPage,
-        data: utmaning
-      });
+      if (_this.refs.router) {
+        _this.refs.router.openRoute({
+          name: 'Utmaning',
+          component: UtmaningPage,
+          data: utmaning
+        });
+      }
     });
   },
   componentWillUnmount(){

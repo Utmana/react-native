@@ -17,21 +17,6 @@ var {
 
 
 var HomePage = React.createClass({
-
-  componentWillMount(){
-    notifications.startListen();
-    notifications.onUtmaning(function(utmaning){
-      router.toRoute({
-        name: 'Utmaning',
-        component: UtmaningPage,
-        data: utmaning
-      });
-    });
-  },
-  componentWillUnmount(){
-    notifications.stopListen();
-  },
-
   getInitialState: function() {
     challenges
       .getLatest()
