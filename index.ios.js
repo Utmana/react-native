@@ -36,7 +36,7 @@ var UtmanaProject = React.createClass({
   componentWillMount(){
     notifications.startListen();
     notifications.onUtmaning(function(utmaning){
-      Router.openRoute({
+      this.refs.router.openRoute({
         name: 'Utmaning',
         component: UtmaningPage,
         data: utmaning
@@ -52,6 +52,7 @@ var UtmanaProject = React.createClass({
         firstRoute={firstRoute}
         headerStyle={styles.header}
         backButtonComponent={BackButton}
+        ref='router'
       />
     );
   }
