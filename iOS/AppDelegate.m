@@ -10,11 +10,25 @@
 #import "AppDelegate.h"
 
 #import "RCTRootView.h"
+#import <Parse/Parse.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+  [Parse setApplicationId:@"f7ChvrjLVlBZ78zioYbOvWCSsUOoRxXeFhI9iT3t"
+         clientKey:@"KM9UFxPrNUwRWHwtoN0kRwqXwMm4OJRHaAR7wuB9"];
+    
+  // Register for Push Notitications
+  UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                  UIUserNotificationTypeBadge |
+                                                  UIUserNotificationTypeSound);
+  UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+  [application registerUserNotificationSettings:settings];
+  [application registerForRemoteNotifications];
+    
   NSURL *jsCodeLocation;
 
   // Loading JavaScript code - uncomment the one you want.
