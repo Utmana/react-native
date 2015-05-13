@@ -40,8 +40,8 @@ var UtmanaProject = React.createClass({
   },
   render() {
     return (
-      <Router 
-        firstRoute={firstRoute} 
+      <Router
+        firstRoute={firstRoute}
         headerStyle={styles.header}
         backButtonComponent={BackButton}
       />
