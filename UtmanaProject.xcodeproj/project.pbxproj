@@ -37,7 +37,7 @@
 		57208B581AFAB35D0052E6C5 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57208B541AFAB35D0052E6C5 /* ParseUI.framework */; };
 		57208B5C1AFAB3B40052E6C5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57208B5B1AFAB3B40052E6C5 /* Accounts.framework */; };
 		57208B5E1AFAB3B90052E6C5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57208B5D1AFAB3B90052E6C5 /* Social.framework */; };
-		575F74651B03D9C00090241C /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 575F74641B03D9C00090241C /* main.jsbundle */; };
+		575F74671B03F98F0090241C /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 575F74661B03F98F0090241C /* main.jsbundle */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -148,7 +148,7 @@
 		57208B541AFAB35D0052E6C5 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		57208B5B1AFAB3B40052E6C5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		57208B5D1AFAB3B90052E6C5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		575F74641B03D9C00090241C /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		575F74661B03F98F0090241C /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.jsbundle; path = iOS/main.jsbundle; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,7 +249,7 @@
 		13B07FAE1A68108700A75B9A /* UtmanaProject */ = {
 			isa = PBXGroup;
 			children = (
-				575F74641B03D9C00090241C /* main.jsbundle */,
+				575F74661B03F98F0090241C /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -507,7 +507,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				575F74651B03D9C00090241C /* main.jsbundle in Resources */,
+				575F74671B03F98F0090241C /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);

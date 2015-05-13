@@ -50,12 +50,11 @@ var CreateUtmaningPage = React.createClass({
   },
 
   save() {
-    challenges.create({
-      title: this.state.title,
-      summary: this.state.summary,
-      timeout: this.state.timeout,
-      category: this.state.category,
-    });
+    var value = this.refs.form.getValue();
+    if (!value) return;
+
+    console.log('value', value);
+    challenges.create(this.refs.form.getValue())
     this.props.toBack();
   },
 
@@ -70,12 +69,10 @@ var CreateUtmaningPage = React.createClass({
           error: 'Du måste ange rubrik'
         },
         summary: {
-          placeholder: 'Beskriv vad utmaningen går ut på',
-          multiline: 'true'
+          placeholder: 'Berätta mer!'
         },
         category: {
-          label: 'Typ av utmaning',
-          help: 'Välj hur denna utmaning gör något något bra'
+          label: 'Typ av utmaning'
         }
       }
     };
