@@ -4,6 +4,7 @@ var React = require('react-native');
 
 var Utmaning = require('../components/Utmaning');
 var UtmaningPage = require('../components/UtmaningDetails');
+var notifications = require('../lib/notifications');
 
 var challenges = require('../lib/challenges');
 
@@ -16,6 +17,20 @@ var {
 
 
 var HomePage = React.createClass({
+
+  componentWillMount(){
+    notifications.startListen();
+    notifications.onUtmaning(function(utmaning){
+      router.toRoute({
+        name: 'Utmaning',
+        component: UtmaningPage,
+        data: utmaning
+      });
+    });
+  },
+  componentWillUnmount(){
+    notifications.stopListen();
+  },
 
   getInitialState: function() {
     challenges

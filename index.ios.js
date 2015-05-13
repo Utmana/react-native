@@ -7,6 +7,7 @@ var Router = require('react-native-router');
 var HomePage = require('./pages/HomePage');
 var BackButton = require('./components/BackButton');
 var SearchAndCompose = require('./components/icons/SearchAndCompose');
+var UtmaningPage = require('./components/UtmaningDetails');
 var CreateUtmaning = require('./components/icons/CreateUtmaning');
 var notifications = require('./lib/notifications');
 
@@ -34,6 +35,13 @@ var firstRoute = {
 var UtmanaProject = React.createClass({
   componentWillMount(){
     notifications.startListen();
+    notifications.onUtmaning(function(utmaning){
+      Router.openRoute({
+        name: 'Utmaning',
+        component: UtmaningPage,
+        data: utmaning
+      });
+    });
   },
   componentWillUnmount(){
     notifications.stopListen();
@@ -45,7 +53,7 @@ var UtmanaProject = React.createClass({
         headerStyle={styles.header}
         backButtonComponent={BackButton}
       />
-    )
+    );
   }
 });
 
