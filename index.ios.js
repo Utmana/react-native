@@ -10,6 +10,7 @@ var UtmaningPage = require('./components/UtmaningDetails');
 var CreateUtmaning = require('./components/icons/CreateUtmaning');
 var notifications = require('./lib/notifications');
 require('babel/polyfill');
+var AppDispatcher = require('./lib/dispatcher');
 
 var {
   StyleSheet,
@@ -33,6 +34,11 @@ var UtmanaProject = React.createClass({
     var _this = this;
     notifications.startListen();
     notifications.onUtmaning(function(utmaning){
+      AppDispatcher.dispatch({
+        actionType: 'challenge',
+        challenge: utmaning
+      });
+
       if (_this.refs.router) {
         _this.refs.router.openRoute({
           name: 'Utmaning',
