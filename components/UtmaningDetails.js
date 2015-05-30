@@ -29,8 +29,7 @@ var UtmaningDetails = React.createClass({
         this.setState({
           challenge: challenge
         });
-      })
-      .done();
+      });
   },
 
   parseTimeout(minutes){
