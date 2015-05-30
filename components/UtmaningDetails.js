@@ -44,9 +44,7 @@ var UtmaningDetails = React.createClass({
           challenge: challenge
         });
         this.props.toBack();
-        
-      })
-      .done();
+      });
   },
 
   render() {
