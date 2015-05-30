@@ -4,6 +4,7 @@ var React = require('react-native');
 var GoalIcon = require('./icons/Goal');
 var Button = require('./Button');
 var challenges = require('../lib/challenges');
+var timeouts = require('../lib/timeouts');
 
 var {
   StyleSheet,
@@ -30,6 +31,10 @@ var UtmaningDetails = React.createClass({
         });
       })
       .done();
+  },
+
+  parseTimeout(minutes){
+    return timeouts[minutes];
   },
 
   accept() {
@@ -60,7 +65,7 @@ var UtmaningDetails = React.createClass({
           </View>
 
         </View>
-          <Text style={styles.helpText}>Om du väljer att acceptera utmaningen kommer du få en påminnelse om exakt 30 minuter. Då skall utmaningen vara utförd.</Text>
+          <Text style={styles.helpText}>Om du väljer att acceptera utmaningen kommer du få en påminnelse om exakt {this.parseTimeout(challenge.timeout)}. Då skall utmaningen vara utförd.</Text>
       </ScrollView>
     )
   }

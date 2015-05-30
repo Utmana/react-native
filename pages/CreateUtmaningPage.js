@@ -21,22 +21,14 @@ var Categories = t.enums({
   P: 'Personlig'
 });
 
-var Timeouts = t.enums({
-  10 : '10 minuter',
-  30 : '30 minuter',
-  60 : 'en timme',
-  120 : 'två timmar',
-  300 : 'fem timmar',
-  1440 : 'ett dygn',
-  10080 : 'en vecka',
-});
+var Timeouts = t.enums(timeouts);
 
 // here we are: define your domain model
 var Model = t.struct({
   title: t.Str,                 
   summary: t.maybe(t.Str),      
-  //timeout: Timeouts,               
-  category: Categories           
+  timeout: Timeouts,               
+  //category: Categories           
 });
 
 var CreateUtmaningPage = React.createClass({
@@ -65,27 +57,31 @@ var CreateUtmaningPage = React.createClass({
       fields: { 
         title: {
           placeholder: 'Rubrik på utmaningen',
-          help:'T.ex. "Ge en av dina kollegor en kram när du går hem idag"',
+          //help:'T.ex. "Ge en av dina kollegor en kram när du går hem idag"',
           error: 'Du måste ange rubrik'
         },
         summary: {
-          placeholder: 'Berätta mer!'
+          placeholder: 'Mer detaljer om utmaningen...'
         },
         category: {
           label: 'Typ av utmaning'
+        },
+        timeout: {
+          label: 'Tidsfrist'
         }
       }
     };
+    var saveButton = (<View>Spara</View>);
 
     return (
-      <View style={styles.container}>
+      <View style={styles.container} rightCorner={saveButton}>
         <Form
           ref='form'
           type={Model}
           value={this.state}
           options={options}
         />
-        <Button onPress={this.save} style={styles.button} text='Spara' underlayColor='#99d9f4'/>
+        <Button onPress={this.save} style={styles.button} text="Spara"></Button>
       </View>
     )
   }

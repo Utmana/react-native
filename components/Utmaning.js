@@ -22,7 +22,7 @@ var Utmaning = React.createClass({
   render() {
     var {
       _id,
-      image,
+      category,
       summary,
       title
     } = this.props;
@@ -31,7 +31,7 @@ var Utmaning = React.createClass({
     return (
       <TouchableHighlight underlayColor="transparent" onPress={this.goToUtmaning}>
         <View style={styles.utmaningContainer}>
-          <GoalIcon/>
+          <GoalIcon category={category} />
           <View style={styles.rightContainer}>
             <View style={styles.userContainer}>
               <Text style={styles.title}>{title}</Text>

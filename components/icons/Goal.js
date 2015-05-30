@@ -29,21 +29,13 @@ var styles = StyleSheet.create({
 });
 
 var GoalIcon = React.createClass({
-  randomGoal(){
-    switch (Math.round((Math.random() * 10) % 3)){
-      case 0: return 'ME'; // I'll be a better person
-      case 1: return 'GG'; // Greater good
-      case 2: return 'E';  // Environment
-      case 3: return 'I';  // Integration
-    }
-  },
-
+  
   // change to real icons later
   render() {
     return (
       <View style={styles.category}>
         <Text style={styles.categoryText}>
-          {this.randomGoal()} 
+          {this.props.category || 'G'} 
         </Text>
       </View>
     )
