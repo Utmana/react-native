@@ -7,10 +7,7 @@ var t = require('tcomb-form-native');
 var timeouts = require('../lib/timeouts');
 
 var {
-  PickerIOS,
   StyleSheet,
-  Text,
-  TextInput,
   View,
 } = React;
 
@@ -91,11 +88,12 @@ var CreateUtmaningPage = React.createClass({
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 90,
     marginTop: 50,
     padding: 10
   },
   button: {
+    flex: 10,
     height: 36,
     backgroundColor: '#48BBEC',
     borderColor: '#48BBEC',

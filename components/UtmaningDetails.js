@@ -37,7 +37,16 @@ var UtmaningDetails = React.createClass({
   },
 
   accept() {
-    this.props.toBack();
+    challenges
+      .accept(this.state.challenge._id)
+      .then((challenge) => {
+        this.setState({
+          challenge: challenge
+        });
+        this.props.toBack();
+        
+      })
+      .done();
   },
 
   render() {

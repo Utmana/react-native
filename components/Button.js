@@ -13,7 +13,7 @@ var {
 
 var styles = StyleSheet.create({
  button: {
-    flex: 3,
+    flex: 1,
     backgroundColor: '#3fbf88',
     height: 20,
     marginBottom: 16
