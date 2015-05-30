@@ -17,21 +17,28 @@ var {
 
 
 var HomePage = React.createClass({
-  getInitialState: function() {
-    challenges
-      .getLatest()
-      .then((result) => {
-        this.setState({
-          challenges: this.state.challenges.cloneWithRows(result)
-        });
-      })
-      .done();
+  componentDidMount() {
+    challenges.on('change', this.onChallengesChange);
+  },
 
+  componentWillUnmount() {
+    challenges.removeListener('change', this.onChallengesChange);
+  },
+
+  getInitialState: function() {
+    challenges.getLatest();
     return {
       challenges: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
       })
     };
+  },
+
+  onChallengesChange() {
+    var data = challenges.getLatest();
+    this.setState({
+      challenges: this.state.challenges.cloneWithRows(data)
+    });
   },
 
   goToUtmaning: function(utmaningData) {
