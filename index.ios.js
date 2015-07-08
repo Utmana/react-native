@@ -2,7 +2,7 @@
 
 var React = require('react-native');
 
-var Router = require('react-native-router');
+// var Router = require('react-native-router');
 
 var HomePage = require('./pages/HomePage');
 var BackButton = require('./components/BackButton');
@@ -52,12 +52,7 @@ var UtmanaProject = React.createClass({
   },
   render() {
     return (
-      <Router
-        firstRoute={firstRoute}
-        headerStyle={styles.header}
-        backButtonComponent={BackButton}
-        ref='router'
-      />
+      <div>HELLO</div>
     );
   }
 });

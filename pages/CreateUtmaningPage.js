@@ -3,7 +3,7 @@
 var React = require('react-native');
 var Button = require('../components/Button');
 var challenges = require('../lib/challenges');
-var t = require('tcomb-form-native');
+var t; // = require('tcomb-form-native');
 var timeouts = require('../lib/timeouts');
 
 var {
@@ -23,10 +23,10 @@ var Timeouts = t.enums(timeouts);
 
 // here we are: define your domain model
 var Model = t.struct({
-  title: t.Str,                 
-  summary: t.maybe(t.Str),      
-  timeout: Timeouts,               
-  //category: Categories           
+  title: t.Str,
+  summary: t.maybe(t.Str),
+  timeout: Timeouts,
+  //category: Categories
 });
 
 var CreateUtmaningPage = React.createClass({
@@ -51,8 +51,8 @@ var CreateUtmaningPage = React.createClass({
   render() {
 
     var options = {
-      auto: 'placeholders', 
-      fields: { 
+      auto: 'placeholders',
+      fields: {
         title: {
           placeholder: 'Rubrik på utmaningen',
           //help:'T.ex. "Ge en av dina kollegor en kram när du går hem idag"',
