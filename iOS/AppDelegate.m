@@ -19,7 +19,7 @@
     
   [Parse setApplicationId:@"f7ChvrjLVlBZ78zioYbOvWCSsUOoRxXeFhI9iT3t"
          clientKey:@"KM9UFxPrNUwRWHwtoN0kRwqXwMm4OJRHaAR7wuB9"];
-
+    
     
   // Register for Push Notitications
   UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
@@ -64,6 +64,8 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    //
+    
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];

@@ -9,7 +9,6 @@ var BackButton = require('./components/BackButton');
 var UtmaningPage = require('./components/UtmaningDetails');
 var CreateUtmaning = require('./components/icons/CreateUtmaning');
 var notifications = require('./lib/notifications');
-require('babel/polyfill');
 var AppDispatcher = require('./lib/dispatcher');
 
 var {
