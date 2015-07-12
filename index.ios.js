@@ -1,8 +1,7 @@
 'use strict';
 
 var React = require('react-native');
-
-// var Router = require('react-native-router');
+var Router = require('react-native-router');
 
 var HomePage = require('./pages/HomePage');
 var BackButton = require('./components/BackButton');
@@ -52,7 +51,7 @@ var UtmanaProject = React.createClass({
   },
   render() {
     return (
-      <div>HELLO</div>
+      <Router firstRoute={firstRoute} />
     );
   }
 });
