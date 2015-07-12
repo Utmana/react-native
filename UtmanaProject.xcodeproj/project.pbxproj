@@ -36,8 +36,8 @@
 		57208B581AFAB35D0052E6C5 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57208B541AFAB35D0052E6C5 /* ParseUI.framework */; };
 		57208B5C1AFAB3B40052E6C5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57208B5B1AFAB3B40052E6C5 /* Accounts.framework */; };
 		57208B5E1AFAB3B90052E6C5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57208B5D1AFAB3B90052E6C5 /* Social.framework */; };
-		575F74671B03F98F0090241C /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 575F74661B03F98F0090241C /* main.jsbundle */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		9C869D101B52F9C700B6F44C /* ExternalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C869D0F1B52F9C700B6F44C /* ExternalManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,8 +139,9 @@
 		57208B541AFAB35D0052E6C5 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		57208B5B1AFAB3B40052E6C5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		57208B5D1AFAB3B90052E6C5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		575F74661B03F98F0090241C /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.jsbundle; path = iOS/main.jsbundle; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		9C869D0F1B52F9C700B6F44C /* ExternalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExternalManager.m; path = iOS/ExternalManager.m; sourceTree = "<group>"; };
+		9C869D111B52F9DC00B6F44C /* ExternalManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExternalManager.h; path = iOS/ExternalManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,13 +232,14 @@
 		13B07FAE1A68108700A75B9A /* UtmanaProject */ = {
 			isa = PBXGroup;
 			children = (
-				575F74661B03F98F0090241C /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				9C869D0F1B52F9C700B6F44C /* ExternalManager.m */,
+				9C869D111B52F9DC00B6F44C /* ExternalManager.h */,
 			);
 			name = UtmanaProject;
 			sourceTree = "<group>";
@@ -477,7 +479,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				575F74671B03F98F0090241C /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
@@ -492,6 +493,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				9C869D101B52F9C700B6F44C /* ExternalManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

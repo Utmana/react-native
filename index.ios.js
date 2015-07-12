@@ -12,7 +12,8 @@ var AppDispatcher = require('./lib/dispatcher');
 
 var {
   StyleSheet,
-  AppRegistry
+  AppRegistry,
+  NativeAppEventEmitter
 } = React;
 
 var styles = StyleSheet.create({
@@ -28,6 +29,12 @@ var firstRoute = {
 };
 
 var UtmanaProject = React.createClass({
+  componentDidMount(){
+    var usernameSubscription = NativeAppEventEmitter.addListener(
+      'UsernameEvent',
+      (username) => console.log(username.id)
+    );
+  },
   componentWillMount(){
     var _this = this;
     notifications.startListen();
@@ -48,6 +55,7 @@ var UtmanaProject = React.createClass({
   },
   componentWillUnmount(){
     notifications.stopListen();
+    usernameSubscription.remove();
   },
   render() {
     return (
@@ -55,7 +63,6 @@ var UtmanaProject = React.createClass({
     );
   }
 });
-
 
 
 AppRegistry.registerComponent('UtmanaProject', () => UtmanaProject);

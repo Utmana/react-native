@@ -11,8 +11,12 @@
 
 #import "RCTRootView.h"
 #import <Parse/Parse.h>
+#import "RCTBridge.h"
+#import "RCTEventDispatcher.h"
 
 @implementation AppDelegate
+
+@synthesize externalManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -41,7 +45,7 @@
   //
   // To run on device, change `localhost` to the IP address of your computer, and make sure your computer and
   // iOS device are on the same Wi-Fi network.
-  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle"];
+  //jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle"];
 
   // OPTION 2
   // Load from pre-bundled file on disk. To re-generate the static bundle, run
@@ -49,7 +53,7 @@
   // $ curl http://localhost:8081/index.ios.bundle -o main.jsbundle
   //
   // and uncomment the next following line
-  //jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"UtmanaProject"
@@ -71,6 +75,7 @@
     [currentInstallation setDeviceTokenFromData:deviceToken];
     currentInstallation.channels = @[ @"global" ];
     [currentInstallation saveInBackground];
+    [externalManager sendUsername: currentInstallation.installationId];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

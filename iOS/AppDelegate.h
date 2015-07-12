@@ -8,9 +8,11 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "ExternalManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) ExternalManager *externalManager;
 
 @end
