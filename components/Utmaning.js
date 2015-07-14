@@ -24,9 +24,10 @@ var Utmaning = React.createClass({
       _id,
       category,
       summary,
+      acceptedCount,
+      finishedCount,
       title
     } = this.props;
-
 
     return (
       <TouchableHighlight underlayColor="transparent" onPress={this.goToUtmaning}>
@@ -35,7 +36,10 @@ var Utmaning = React.createClass({
           <View style={styles.rightContainer}>
             <View style={styles.userContainer}>
               <Text style={styles.title}>{title}</Text>
-              <Text style={styles.summary}>{summary}</Text>
+              <View style={styles.summary}>
+                { acceptedCount ? <Text style={ styles.accepted }>{acceptedCount} har accepterat </Text> : null }
+                { finishedCount ? <Text style={ styles.finished }>{finishedCount} har slutfört</Text> : null }
+              </View>
             </View>
           </View>
         </View>
@@ -50,28 +54,36 @@ var styles = StyleSheet.create({
     backgroundColor: 'white',
     borderBottomWidth: 1,
     borderColor: '#DAE6F0',
-    paddingTop: 4,
-    paddingBottom: 10
+    paddingTop: 5,
+    paddingBottom: 1
   },
   userContainer: {
-    flexDirection: 'row'
+    flexDirection: 'column'
   },
   summary: {
-    marginLeft: 4,
     fontSize: 14,
-    color: '#000000',
-    marginTop: 2
+    flex:1,
+    flexDirection: 'row',
+    color: '#999',
+    marginTop: 6
+  },
+  accepted: {
+    alignSelf: 'flex-start',
+  },
+  finished: {
+    alignSelf: 'flex-end',
+    color: '#9c9',
   },
   title: {
     fontWeight: '600',
     fontSize: 15
   },
   text: {
-    marginTop: 5
+    marginTop: 2
   },
   rightContainer: {
     flex: 1,
-    padding: 10
+    padding: 8
   }
 });
 

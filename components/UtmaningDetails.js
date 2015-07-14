@@ -33,7 +33,7 @@ var UtmaningDetails = React.createClass({
   },
 
   parseTimeout(minutes){
-    return timeouts[minutes];
+    return timeouts[minutes] || minutes + ' minuter';
   },
 
   accept() {
@@ -44,6 +44,20 @@ var UtmaningDetails = React.createClass({
           challenge: challenge
         });
         this.props.toBack();
+      });
+  },
+  finish() {
+    challenges
+      .finish(this.state.challenge._id)
+      .then((challenge) => {
+        console.log('finished', arguments);
+        this.setState({
+          challenge: challenge
+        });
+        this.props.toBack();
+      })
+      .catch((err) => {
+        console.log('fail', err);
       });
   },
 
@@ -63,15 +77,16 @@ var UtmaningDetails = React.createClass({
             <Text style={styles.summary}>{challenge.summary}</Text>
           </View>
           <View style={styles.statsContainer}>
-            <Text style={styles.rtBold}>10</Text>
+            <Text style={styles.rtBold}>{ challenge.acceptedCount || 0 }</Text>
             <Text style={styles.rtText}>ACCEPTERAT</Text>
-            <Text style={styles.rtBold}>3</Text>
+            <Text style={styles.rtBold}>{ challenge.finishedCount || 0 }</Text>
             <Text style={styles.rtText}>SLUTFÖRT</Text>
             <Button onPress={this.accept} text='Acceptera'/>
+            <Button onPress={this.finish} text='Slutfört'/>
           </View>
 
         </View>
-          <Text style={styles.helpText}>Om du väljer att acceptera utmaningen kommer du få en påminnelse om exakt {this.parseTimeout(challenge.timeout)}. Då skall utmaningen vara utförd.</Text>
+          <Text style={styles.helpText}>Om du väljer att acceptera utmaningen kommer du få en påminnelse om exakt {this.parseTimeout(challenge.timeout || 5 )}. Då skall utmaningen vara utförd.</Text>
       </ScrollView>
     )
   }
@@ -91,12 +106,10 @@ var styles = StyleSheet.create({
     borderColor: '#DAE6F0'
   },
   rtBold: {
-    fontSize: 14,
     marginRight: 3,
     fontWeight: '600',
   },
   rtText: {
-    fontSize: 14,
     fontWeight: '400',
     color: '#748999',
     paddingRight: 10
