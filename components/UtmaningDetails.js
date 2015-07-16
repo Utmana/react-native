@@ -84,6 +84,11 @@ var UtmaningDetails = React.createClass({
             <GoalIcon category={timeouts.shorten(challenge.timeout)}/>
             <View style={styles.rightContainer}>
               <Text style={styles.title}>{challenge.title}</Text>
+              <Text style={styles.timeout}>
+                { 
+                  this.state.me && !this.state.me.finished ? 'deadline: ' + moment(this.state.me.accepted).add(challenge.timeout, 'minutes').fromNow() : null
+                }
+              </Text>
             </View>
           </View>
           <View style={styles.textContainer}>
@@ -184,6 +189,9 @@ var styles = StyleSheet.create({
   },
   finished: {
     color: '#9c9'
+  },
+  timeout:{
+    color: '#c99'
   }
 });
 
