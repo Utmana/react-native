@@ -2,6 +2,7 @@
 
 var React = require('react-native');
 var GoalIcon = require('./icons/Goal');
+var timeouts = require('../lib/timeouts');
 
 var {
   AppRegistry,
@@ -26,13 +27,14 @@ var Utmaning = React.createClass({
       summary,
       acceptedCount,
       finishedCount,
+      timeout,
       title
     } = this.props;
 
     return (
       <TouchableHighlight underlayColor="transparent" onPress={this.goToUtmaning}>
         <View style={styles.utmaningContainer}>
-          <GoalIcon category={category} />
+          <GoalIcon category={timeouts.shorten(timeout)} />
           <View style={styles.rightContainer}>
             <View style={styles.userContainer}>
               <Text style={styles.title}>{title}</Text>

@@ -71,7 +71,7 @@ var styles = StyleSheet.create({
     backgroundColor: '#f5f8fa'
   },
   listView: {
-    paddingTop: 20,
+    paddingTop: 5,
     backgroundColor: '#F5FCFF',
   }
 });

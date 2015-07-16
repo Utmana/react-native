@@ -5,10 +5,12 @@ var Button = require('../components/Button');
 var challenges = require('../lib/challenges');
 var t = require('tcomb-form-native');
 var timeouts = require('../lib/timeouts');
+var GoalIcon = require('../components/icons/Goal');
 
 var {
   StyleSheet,
   View,
+  Text
 } = React;
 
 var Form = t.form.Form;
@@ -34,7 +36,7 @@ var CreateUtmaningPage = React.createClass({
     return {
       title: '',
       summary: '',
-      timeout: 30,
+      timeout: '60',
       category: {}
     };
   },
@@ -55,17 +57,19 @@ var CreateUtmaningPage = React.createClass({
       fields: {
         title: {
           placeholder: 'Rubrik på utmaningen',
+          autoFocus: true,
           //help:'T.ex. "Ge en av dina kollegor en kram när du går hem idag"',
           error: 'Du måste ange rubrik'
         },
         summary: {
-          placeholder: 'Mer detaljer om utmaningen...'
+          placeholder: 'Mer detaljer om utmaningen...',
+          help: 'Berätta vad som krävs för att utmaningen ska anses vara avklarad',
         },
         category: {
           label: 'Typ av utmaning'
         },
         timeout: {
-          label: 'Tidsfrist'
+          label: 'Så här lång tid har man på sig att slutföra'
         }
       }
     };
@@ -80,6 +84,9 @@ var CreateUtmaningPage = React.createClass({
           options={options}
         />
         <Button onPress={this.save} style={styles.button} text="Spara"></Button>
+        <Text style={styles.helpText}>
+          När du sparar din utmaning kommer den granskas och automatiskt publiceras till alla som har appen installerad. Alla utmaningar måste följa våra regler. Läs mer på utmana.me
+        </Text>
       </View>
     )
   }
@@ -88,20 +95,32 @@ var CreateUtmaningPage = React.createClass({
 
 var styles = StyleSheet.create({
   container: {
-    flex: 90,
-    marginTop: 50,
+    marginTop: 5,
     padding: 10
   },
   button: {
-    flex: 10,
     height: 36,
     backgroundColor: '#48BBEC',
     borderColor: '#48BBEC',
     borderWidth: 1,
     borderRadius: 8,
     marginBottom: 10,
-    alignSelf: 'stretch',
     justifyContent: 'center'
+  },
+  categorySelector: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10
+  },
+  helpText: {
+    color: '#555',
+    marginTop: 10
+  },
+  label:{
+    color: '#000',
+    fontSize: 15,
+    marginTop: 7,
+    marginBottom: 7,
   }
 });
 

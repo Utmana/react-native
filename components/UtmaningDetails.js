@@ -5,6 +5,7 @@ var GoalIcon = require('./icons/Goal');
 var Button = require('./Button');
 var challenges = require('../lib/challenges');
 var timeouts = require('../lib/timeouts');
+var moment = require('moment');
 
 var {
   StyleSheet,
@@ -30,6 +31,18 @@ var UtmaningDetails = React.createClass({
           challenge: challenge
         });
       });
+
+    challenges
+      .me(this.state.challenge._id)
+      .then((me) => {
+        console.log('me', me);
+        this.setState({
+          me: me
+        });
+      })
+      .catch((err) => {
+        console.log('me error', err);
+      })
   },
 
   parseTimeout(minutes){
@@ -68,7 +81,7 @@ var UtmaningDetails = React.createClass({
       <ScrollView>
         <View style={styles.utmaningContainer}>
           <View style={styles.userContainer}>
-            <GoalIcon />
+            <GoalIcon category={timeouts.shorten(challenge.timeout)}/>
             <View style={styles.rightContainer}>
               <Text style={styles.title}>{challenge.title}</Text>
             </View>
@@ -81,13 +94,22 @@ var UtmaningDetails = React.createClass({
             <Text style={styles.rtText}>ACCEPTERAT</Text>
             <Text style={styles.rtBold}>{ challenge.finishedCount || 0 }</Text>
             <Text style={styles.rtText}>SLUTFÖRT</Text>
-            <Button onPress={this.accept} text='Acceptera'/>
-            <Button onPress={this.finish} text='Slutfört'/>
+            {
+              this.state.me && !this.state.me.finished ? 
+              <Button onPress={this.finish} text='Klart!'/> 
+              : 
+              <Text style={styles.finished}>{this.state.me && moment(this.state.me.finished).fromNow()}</Text>
+            }
           </View>
 
         </View>
-          <Text style={styles.helpText}>Om du väljer att acceptera utmaningen kommer du få en påminnelse om exakt {this.parseTimeout(challenge.timeout || 5 )}. Då skall utmaningen vara utförd.</Text>
-      </ScrollView>
+        <Text style={styles.helpText}>Om du väljer att acceptera utmaningen kommer du få en påminnelse om exakt {this.parseTimeout(challenge.timeout || 5 )}. Då skall utmaningen vara utförd.</Text>
+        {
+          !this.state.me ? <Button onPress={this.accept} text='Acceptera'/> : null
+        }
+            
+        
+     </ScrollView>
     )
   }
 });
@@ -140,13 +162,16 @@ var styles = StyleSheet.create({
     flexDirection: 'column'
   },
   title: {
-    fontSize: 13,
-    color: '#8999a5',
+    fontSize: 23,
+    color: '#333',
     marginTop: 2
   },
   name: {
     fontWeight: '600',
     fontSize: 15
+  },
+  reportButton: {
+    backgroundColor: '#a33'
   },
   summary: {
     marginTop: 5,
@@ -156,6 +181,9 @@ var styles = StyleSheet.create({
   rightContainer: {
     flex: 1,
     padding: 10
+  },
+  finished: {
+    color: '#9c9'
   }
 });
 
