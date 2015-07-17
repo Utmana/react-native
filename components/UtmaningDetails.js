@@ -6,6 +6,8 @@ var Button = require('./Button');
 var challenges = require('../lib/challenges');
 var timeouts = require('../lib/timeouts');
 var moment = require('moment');
+var loaded_locale = require('moment/locale/sv');
+moment.locale('sv', loaded_locale);
 
 var {
   StyleSheet,
@@ -24,29 +26,29 @@ var UtmaningDetails = React.createClass({
   },
 
   componentDidMount() {
-    challenges
-      .get(this.state.challenge._id)
-      .then((challenge) => {
-        this.setState({
-          challenge: challenge
-        });
-      });
+    var id = this.state.challenge._id;
+    var challenge = challenges.get(id);
+    var me = challenges.me(id);
 
-    challenges
-      .me(this.state.challenge._id)
-      .then((me) => {
-        console.log('me', me);
-        this.setState({
-          me: me
-        });
-      })
-      .catch((err) => {
-        console.log('me error', err);
-      })
+    Promise.all([challenge,me]).then((results) => {
+      this.setState({
+        challenge: results[0],
+        me: results[1]
+      });
+    }, (err) => {
+      console.log('me error', err);
+    });
   },
 
   parseTimeout(minutes){
     return timeouts[minutes] || minutes + ' minuter';
+  },
+
+  deadline(challenge){
+    if (!challenge.timeout) {
+      return 'resten av livet';
+    }
+    return moment(this.state.me.accepted).add(challenge.timeout, 'minutes').fromNow();
   },
 
   accept() {
@@ -86,7 +88,7 @@ var UtmaningDetails = React.createClass({
               <Text style={styles.title}>{challenge.title}</Text>
               <Text style={styles.timeout}>
                 { 
-                  this.state.me && !this.state.me.finished ? 'deadline: ' + moment(this.state.me.accepted).add(challenge.timeout, 'minutes').fromNow() : null
+                  challenge.timeout && this.state.me && !this.state.me.finished ? 'deadline: ' + this.deadline(challenge) : null
                 }
               </Text>
             </View>
@@ -108,7 +110,15 @@ var UtmaningDetails = React.createClass({
           </View>
 
         </View>
-        <Text style={styles.helpText}>Om du väljer att acceptera utmaningen kommer du få en påminnelse om exakt {this.parseTimeout(challenge.timeout || 5 )}. Då skall utmaningen vara utförd.</Text>
+        {
+          !this.state.me ? 
+            <Text style={styles.helpText}>Om du väljer att acceptera utmaningen kommer du få en påminnelse om exakt {this.parseTimeout(challenge.timeout || 5 )}. Då skall utmaningen vara utförd.</Text>
+          :
+            !this.state.me.finished ? 
+              <Text style={styles.helpText}>Du har accepterat denna utmaning, {this.deadline(challenge)} ska den vara klar.</Text>
+            :
+              <Text style={styles.helpText}>Du har avslutat denna utmaning, du slutförde den på {moment.duration(this.state.me.finished-this.state.me.accepted, 'milliseconds').humanize()}.</Text>
+        }
         {
           !this.state.me ? <Button onPress={this.accept} text='Acceptera'/> : null
         }
