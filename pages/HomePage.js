@@ -6,7 +6,7 @@ var Utmaning = require('../components/Utmaning');
 var UtmaningPage = require('../components/UtmaningDetails');
 var notifications = require('../lib/notifications');
 
-var challenges = require('../lib/challenges');
+var challenges = require('../lib/stores/challenges');
 
 var {
   ListView,
