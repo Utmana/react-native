@@ -8,7 +8,7 @@ var BackButton = require('./components/BackButton');
 var UtmaningPage = require('./components/UtmaningDetails');
 var CreateUtmaning = require('./components/icons/CreateUtmaning');
 var notifications = require('./lib/notifications');
-var AppDispatcher = require('./lib/dispatcher');
+var AppDispatcher = require('./lib/dispatcher/dispatcher');
 
 var {
   StyleSheet,

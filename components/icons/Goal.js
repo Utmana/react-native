@@ -13,7 +13,7 @@ var {
 
 var styles = StyleSheet.create({
   category: {
-    backgroundColor: 'lightgray',
+    backgroundColor: '#4422AE',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -23,7 +23,7 @@ var styles = StyleSheet.create({
     borderRadius: 4
   },
   categoryText: {
-    color: 'white',
+    color: '#00CA69',
     fontSize: 22
   },
 });
