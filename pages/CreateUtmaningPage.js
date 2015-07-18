@@ -15,12 +15,6 @@ var {
 
 var Form = t.form.Form;
 
-var Categories = t.enums({
-  V: 'Bättre värld',
-  I: 'Integration',
-  P: 'Personlig'
-});
-
 var Timeouts = t.enums(timeouts);
 
 // here we are: define your domain model
@@ -28,7 +22,6 @@ var Model = t.struct({
   title: t.Str,
   summary: t.maybe(t.Str),
   timeout: Timeouts,
-  //category: Categories
 });
 
 var CreateUtmaningPage = React.createClass({
@@ -36,8 +29,7 @@ var CreateUtmaningPage = React.createClass({
     return {
       title: '',
       summary: '',
-      timeout: '60',
-      category: {}
+      timeout: '60'
     };
   },
 
@@ -62,8 +54,8 @@ var CreateUtmaningPage = React.createClass({
           error: 'Du måste ange rubrik'
         },
         summary: {
-          placeholder: 'Mer detaljer om utmaningen...',
-          help: 'Berätta vad som krävs för att utmaningen ska anses vara avklarad',
+          placeholder: 'Mer detaljer',
+          help: 'Vad krävs för att utmaningen ska vara klar?',
         },
         category: {
           label: 'Typ av utmaning'

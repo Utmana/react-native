@@ -12,7 +12,7 @@ var {
 
 
 var styles = StyleSheet.create({
-  category: {
+  plate: {
     backgroundColor: '#eee',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -22,7 +22,7 @@ var styles = StyleSheet.create({
     marginLeft: 10,
     borderRadius: 4,
   },
-  categoryText: {
+  iconText: {
     color: '#00CA69',
     fontWeight: 'bold',
     fontSize: 22
@@ -32,11 +32,11 @@ var styles = StyleSheet.create({
 var GoalIcon = React.createClass({
   // change to real icons later
   render() {
-    if (this.props.category === '-') this.props.category = '∞';
+    if (this.props.icon === '-') this.props.icon = '∞';
     return (
-      <View style={styles.category}>
-        <Text style={styles.categoryText}>
-          {this.props.category || 'G'} 
+      <View style={styles.plate}>
+        <Text style={styles.iconText}>
+          {this.props.icon || 'G'} 
         </Text>
       </View>
     )

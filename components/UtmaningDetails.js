@@ -83,7 +83,7 @@ var UtmaningDetails = React.createClass({
       <ScrollView>
         <View style={styles.utmaningContainer}>
           <View style={styles.userContainer}>
-            <GoalIcon category={timeouts.shorten(challenge.timeout)}/>
+            <GoalIcon icon={timeouts.shorten(challenge.timeout)}/>
             <View style={styles.rightContainer}>
               <Text style={styles.title}>{challenge.title}</Text>
               <Text style={styles.timeout}>

@@ -34,7 +34,7 @@ var Utmaning = React.createClass({
     return (
       <TouchableHighlight underlayColor="transparent" onPress={this.goToUtmaning}>
         <View style={styles.utmaningContainer}>
-          <GoalIcon category={timeouts.shorten(timeout)} />
+          <GoalIcon icon={timeouts.shorten(timeout)} />
           <View style={styles.rightContainer}>
             <View style={styles.userContainer}>
               <Text style={styles.title}>{title}</Text>
