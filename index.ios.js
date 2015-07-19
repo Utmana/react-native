@@ -3,7 +3,7 @@
 var React = require('react-native');
 var Router = require('react-native-router');
 
-var HomePage = require('./pages/HomePage');
+var HomePage = require('./components/pages/HomePage');
 var BackButton = require('./components/BackButton');
 var UtmaningPage = require('./components/UtmaningDetails');
 var CreateUtmaning = require('./components/icons/CreateUtmaning');

@@ -5,7 +5,7 @@ var React = require('react-native');
 var SearchIcon = require('./Search');
 var ComposeIcon = require('./Compose');
 
-var SearchPage = require('../../pages/SearchPage');
+var SearchPage = require('../pages/SearchPage');
 
 var {
   StyleSheet,

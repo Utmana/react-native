@@ -1,11 +1,11 @@
 'use strict';
 
 var React = require('react-native');
-var Button = require('../components/Button');
-var challenges = require('../lib/stores/challenges');
 var t = require('tcomb-form-native');
-var timeouts = require('../lib/timeouts');
-var GoalIcon = require('../components/icons/Goal');
+var challenges = require('../../lib/stores/challenges');
+var timeouts = require('../../lib/timeouts');
+var GoalIcon = require('../icons/Goal');
+var Button = require('../Button');
 
 var {
   StyleSheet,

@@ -2,7 +2,7 @@
 
 var React = require('react-native');
 
-var CreateUtmaningPage = require('../../pages/CreateUtmaningPage');
+var CreateUtmaningPage = require('../pages/CreateUtmaningPage');
 
 var {
   StyleSheet,

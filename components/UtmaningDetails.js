@@ -6,8 +6,7 @@ var Button = require('./Button');
 var challenges = require('../lib/stores/challenges');
 var timeouts = require('../lib/timeouts');
 var moment = require('moment');
-var loaded_locale = require('moment/locale/sv');
-moment.locale('sv', loaded_locale);
+moment.locale('sv', require('moment/locale/sv'));
 
 var {
   StyleSheet,

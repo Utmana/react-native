@@ -2,11 +2,11 @@
 
 var React = require('react-native');
 
-var Utmaning = require('../components/Utmaning');
-var UtmaningPage = require('../components/UtmaningDetails');
-var notifications = require('../lib/notifications');
+var Utmaning = require('../Utmaning');
+var UtmaningPage = require('../UtmaningDetails');
+var notifications = require('../../lib/notifications');
 
-var challenges = require('../lib/stores/challenges');
+var challenges = require('../../lib/stores/challenges');
 
 var {
   ListView,
