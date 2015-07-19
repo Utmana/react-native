@@ -121,6 +121,20 @@ var UtmaningDetails = React.createClass({
         {
           !this.state.me ? <Button onPress={this.accept} text='Acceptera'/> : null
         }
+
+        <View style={styles.toplist}>
+          <Text>User A - Först att slutföra (tre minuter)</Text>
+          <Text>User F - Först att acceptera (du)</Text>
+          <Text>User C - Accepterade kl 20:09</Text>
+          <Text>User D - Accepterade kl 20:10</Text>
+          <Text>User Z - Accepterade kl 20:14</Text>
+          <Text>User C - Accepterade kl 20:19</Text>
+          <Text>User P - Hoppat av</Text>
+          <Text>User P - Hoppat av</Text>
+          <Text>User P - Hoppat av</Text>
+          <Text>User P - Hoppat av</Text>
+          <Text>User P - Hoppat av</Text>
+        </View>
             
         
      </ScrollView>
@@ -201,7 +215,11 @@ var styles = StyleSheet.create({
   },
   timeout:{
     color: '#c99'
+  },
+  toplist:{
+    padding: 10
   }
+
 });
 
 
