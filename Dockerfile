@@ -14,7 +14,7 @@ ADD components  /srv/www/generated-folder-here/components
 RUN mkdir iOS
 
 ## build
-RUN react-native bundle --minify
+RUN react-native bundle
 
 ## remove this line when react-native has an --outdir switch..
 RUN cp iOS/main.jsbundle index.ios.bundle
