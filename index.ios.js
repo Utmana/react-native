@@ -17,14 +17,15 @@ var {
 
 var styles = StyleSheet.create({
   header: {
-    backgroundColor: '#5cafec'
+    backgroundColor: '#00CA69'
   }
 });
 
 var firstRoute = {
   name: 'Utmaningar',
   component: HomePage,
-  leftCorner: CreateUtmaning
+  leftCorner: CreateUtmaning,
+  headerStyle: styles.header
 };
 
 var UtmanaProject = React.createClass({
