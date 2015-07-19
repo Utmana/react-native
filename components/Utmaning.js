@@ -2,7 +2,7 @@
 
 var React = require('react-native');
 var GoalIcon = require('./icons/Goal');
-var timeouts = require('../lib/timeouts');
+var timeouts = require('../lib/stores/timeouts');
 
 var {
   AppRegistry,

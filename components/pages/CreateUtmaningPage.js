@@ -3,7 +3,7 @@
 var React = require('react-native');
 var t = require('tcomb-form-native');
 var challenges = require('../../lib/stores/challenges');
-var timeouts = require('../../lib/timeouts');
+var timeouts = require('../../lib/stores/timeouts');
 var GoalIcon = require('../icons/Goal');
 var Button = require('../Button');
 

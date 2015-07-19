@@ -4,7 +4,7 @@ var React = require('react-native');
 
 var Utmaning = require('../Utmaning');
 var UtmaningPage = require('../UtmaningDetails');
-var notifications = require('../../lib/notifications');
+var notifications = require('../../lib/stores/notifications');
 
 var challenges = require('../../lib/stores/challenges');
 
