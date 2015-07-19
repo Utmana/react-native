@@ -41,8 +41,7 @@
   //
   // To run on device, change `localhost` to the IP address of your computer, and make sure your computer and
   // iOS device are on the same Wi-Fi network.
-  
-  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle"];
+  jsCodeLocation = [NSURL URLWithString:@"http://10.0.1.118:8081/index.ios.bundle"];
   
   //jsCodeLocation = [NSURL URLWithString:@"http://api.utmana.me/index.ios.bundle"];
 

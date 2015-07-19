@@ -32,20 +32,6 @@ var UtmanaProject = React.createClass({
   componentWillMount(){
     var _this = this;
     notifications.startListen();
-    notifications.onUtmaning(function(utmaning){
-      AppDispatcher.dispatch({
-        actionType: 'challenge',
-        challenge: utmaning
-      });
-
-      if (_this.refs.router) {
-        _this.refs.router.openRoute({
-          name: 'Utmaning',
-          component: UtmaningPage,
-          data: utmaning
-        });
-      }
-    });
   },
   componentWillUnmount(){
     notifications.stopListen();
@@ -57,6 +43,20 @@ var UtmanaProject = React.createClass({
   }
 });
 
+
+AppDispatcher.register(function (action) {
+  switch (action.actionType) {
+    case 'notification':
+    console.log('open route', arguments);
+      // UtmanaProject.refs.router.openRoute({
+      //   name: 'Utmaning',
+      //   component: UtmaningPage,
+      //   data: action.challenge
+      // });
+    break;
+  }
+  return true;
+});
 
 
 AppRegistry.registerComponent('UtmanaProject', () => UtmanaProject);

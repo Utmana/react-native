@@ -10,7 +10,9 @@ var Button = require('../Button');
 var {
   StyleSheet,
   View,
-  Text
+  ScrollView,
+  Text,
+  LinkingIOS
 } = React;
 
 var Form = t.form.Form;
@@ -68,7 +70,7 @@ var CreateUtmaningPage = React.createClass({
     var saveButton = (<View>Spara</View>);
 
     return (
-      <View style={styles.container} rightCorner={saveButton}>
+      <ScrollView style={styles.container} rightCorner={saveButton}>
         <Form
           ref='form'
           type={Model}
@@ -79,7 +81,7 @@ var CreateUtmaningPage = React.createClass({
         <Text style={styles.helpText}>
           När du sparar din utmaning kommer den granskas och automatiskt publiceras till alla som har appen installerad. Alla utmaningar måste följa våra regler. Läs mer på utmana.me
         </Text>
-      </View>
+      </ScrollView>
     )
   }
 });
@@ -88,7 +90,8 @@ var CreateUtmaningPage = React.createClass({
 var styles = StyleSheet.create({
   container: {
     marginTop: 5,
-    padding: 10
+    padding: 10,
+    height:300
   },
   button: {
     height: 36,
@@ -106,7 +109,8 @@ var styles = StyleSheet.create({
   },
   helpText: {
     color: '#555',
-    marginTop: 10
+    marginTop: 10,
+    marginBottom: 10,
   },
   label:{
     color: '#000',
