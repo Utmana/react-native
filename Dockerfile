@@ -11,7 +11,7 @@ ADD images  /srv/www/generated-folder-here/images
 ADD index.ios.js /srv/www/generated-folder-here/index.ios.js
 ADD lib  /srv/www/generated-folder-here/lib
 ADD components  /srv/www/generated-folder-here/components
-ADD iOS  /srv/www/generated-folder-here/iOS
+RUN mkdir iOS
 
 ## build
 RUN react-native bundle --minify
