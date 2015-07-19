@@ -98,10 +98,6 @@ var UtmaningDetails = React.createClass({
       });
   },
 
-  renderRow() {
-    return <Text>This is User A - Först att slutföra (tre minuter)</Text>
-  },
-
   render() {
     var challenge = this.state.challenge;
     return (
@@ -153,15 +149,15 @@ var UtmaningDetails = React.createClass({
             .filter(user => { return user.finished })
             .slice(0, 1)
             .map(user => {
-              console.log('user', user);
-              return <Text>User {user.userId} - Först att slutföra {this.parseTimeout(user.finished)}</Text>
+              console.log('user', user.finished);
+              return <Text>User {user.userId} - Först att slutföra ({this.parseTimeout(moment().diff(user.finished, 'minutes'))})</Text>
             })}
 
           {this.state.users
             .filter(user => { return !user.finished })
             .slice(0, 1)
             .map(user => {
-              return <Text>User {user.userId} - Först att acceptera  {user.acceptDate}</Text>
+              return <Text>User {user.userId} - Först att acceptera ({this.parseTimeout(moment().diff(user.acceptDate, 'minutes'))})</Text>
             })}
 
           {this.state.users
