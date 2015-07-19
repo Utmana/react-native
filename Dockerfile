@@ -1,10 +1,20 @@
-FROM iojs
-ADD package.json /app/
-WORKDIR /app
-RUN npm install
-ADD images  /app/images
-ADD index.ios.js /app/index.ios.js
-ADD lib  /app/lib
-ADD components  /app/components
-EXPOSE 8081
-CMD node_modules/react-native/packager/packager.sh
+FROM octohost/nodejs-nginx
+WORKDIR /srv/www/generated-folder-here
+
+## dependencies
+RUN npm install -g react-native-cli
+ADD package.json /srv/www/generated-folder-here/
+RUN npm install --production
+
+## add the app
+ADD images  /srv/www/generated-folder-here/images
+ADD index.ios.js /srv/www/generated-folder-here/index.ios.js
+ADD lib  /srv/www/generated-folder-here/lib
+ADD components  /srv/www/generated-folder-here/components
+ADD iOS  /srv/www/generated-folder-here/iOS
+
+## build
+RUN react-native bundle --minify
+
+EXPOSE 80
+CMD nginx
