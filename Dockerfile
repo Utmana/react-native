@@ -16,5 +16,9 @@ RUN mkdir iOS
 ## build
 RUN react-native bundle --minify
 
+## remove this line when react-native has an --outdir switch..
+RUN cp iOS/main.jsbundle index.ios.bundle
+
+
 EXPOSE 80
 CMD nginx
