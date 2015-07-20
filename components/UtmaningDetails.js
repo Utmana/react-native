@@ -12,10 +12,25 @@ var {
   StyleSheet,
   Text,
   Image,
+  ListView,
   TouchableHighlight,
   ScrollView,
   View,
 } = React;
+
+
+var TopList = React.createClass({
+  render() {
+    return (
+      <View style={styles.toplist}>
+        {this.props.users.map(user => {
+          <Text>{user.finished}</Text>
+        })}
+      </View>
+    )
+  }
+});
+
 
 var UtmaningDetails = React.createClass({
   componentWillMount() {
@@ -28,15 +43,23 @@ var UtmaningDetails = React.createClass({
     var id = this.state.challenge._id;
     var challenge = challenges.get(id);
     var me = challenges.me(id);
+    var users = challenges.users(id);
 
-    Promise.all([challenge,me]).then((results) => {
+    Promise.all([challenge, me, users]).then((results) => {
       this.setState({
         challenge: results[0],
-        me: results[1]
+        me: results[1],
+        users: results[2]
       });
     }, (err) => {
       console.log('me error', err);
     });
+  },
+
+  getInitialState() {
+    return {
+      users: []
+    };
   },
 
   parseTimeout(minutes){
@@ -77,7 +100,6 @@ var UtmaningDetails = React.createClass({
 
   render() {
     var challenge = this.state.challenge;
-
     return (
       <ScrollView>
         <View style={styles.utmaningContainer}>
@@ -86,7 +108,7 @@ var UtmaningDetails = React.createClass({
             <View style={styles.rightContainer}>
               <Text style={styles.title}>{challenge.title}</Text>
               <Text style={styles.timeout}>
-                { 
+                {
                   challenge.timeout && this.state.me && !this.state.me.finished ? 'deadline: ' + this.deadline(challenge) : null
                 }
               </Text>
@@ -101,19 +123,19 @@ var UtmaningDetails = React.createClass({
             <Text style={styles.rtBold}>{ challenge.finishedCount || 0 }</Text>
             <Text style={styles.rtText}>SLUTFÖRT</Text>
             {
-              this.state.me && !this.state.me.finished ? 
-              <Button onPress={this.finish} text='Klart!'/> 
-              : 
+              this.state.me && !this.state.me.finished ?
+              <Button onPress={this.finish} text='Klart!'/>
+              :
               <Text style={styles.finished}>{this.state.me && moment(this.state.me.finished).fromNow()}</Text>
             }
           </View>
 
         </View>
         {
-          !this.state.me ? 
+          !this.state.me ?
             <Text style={styles.helpText}>Om du väljer att acceptera utmaningen kommer du få en påminnelse om exakt {this.parseTimeout(challenge.timeout || 5 )}. Då skall utmaningen vara utförd.</Text>
           :
-            !this.state.me.finished ? 
+            !this.state.me.finished ?
               <Text style={styles.helpText}>Du har accepterat denna utmaning, {this.deadline(challenge)} ska den vara klar.</Text>
             :
               <Text style={styles.helpText}>Du har avslutat denna utmaning, du slutförde den på {moment.duration(this.state.me.finished-this.state.me.accepted, 'milliseconds').humanize()}.</Text>
@@ -123,20 +145,28 @@ var UtmaningDetails = React.createClass({
         }
 
         <View style={styles.toplist}>
-          <Text>User A - Först att slutföra (tre minuter)</Text>
-          <Text>User F - Först att acceptera (du)</Text>
-          <Text>User C - Accepterade kl 20:09</Text>
-          <Text>User D - Accepterade kl 20:10</Text>
-          <Text>User Z - Accepterade kl 20:14</Text>
-          <Text>User C - Accepterade kl 20:19</Text>
-          <Text>User P - Hoppat av</Text>
-          <Text>User P - Hoppat av</Text>
-          <Text>User P - Hoppat av</Text>
-          <Text>User P - Hoppat av</Text>
-          <Text>User P - Hoppat av</Text>
+          {this.state.users
+            .filter(user => { return user.finished })
+            .slice(0, 1)
+            .map(user => {
+              console.log('user', user.finished);
+              return <Text>User {user.userId} - Först att slutföra ({this.parseTimeout(moment().diff(user.finished, 'minutes'))})</Text>
+            })}
+
+          {this.state.users
+            .filter(user => { return !user.finished })
+            .slice(0, 1)
+            .map(user => {
+              return <Text>User {user.userId} - Först att acceptera ({this.parseTimeout(moment().diff(user.acceptDate, 'minutes'))})</Text>
+            })}
+
+          {this.state.users
+            .filter(user => { return !user.finished })
+            .slice(1)
+            .map(user => {
+              return <Text>User {user.userId} - Accepterade {user.acceptDate}</Text>
+            })}
         </View>
-            
-        
      </ScrollView>
     )
   }

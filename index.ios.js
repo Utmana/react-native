@@ -8,11 +8,13 @@ var BackButton = require('./components/BackButton');
 var UtmaningPage = require('./components/UtmaningDetails');
 var CreateUtmaning = require('./components/icons/CreateUtmaning');
 var notifications = require('./lib/stores/notifications');
+var challenges = require('./lib/stores/challenges');
 var AppDispatcher = require('./lib/dispatcher/dispatcher');
 
 var {
   StyleSheet,
-  AppRegistry
+  AppRegistry,
+  AppStateIOS
 } = React;
 
 var styles = StyleSheet.create({
@@ -29,12 +31,35 @@ var firstRoute = {
 };
 
 var UtmanaProject = React.createClass({
-  componentWillMount(){
-    var _this = this;
-    notifications.startListen();
+  getInitialState: function() {
+    return {
+      currentAppState: AppStateIOS.currentState,
+    };
   },
-  componentWillUnmount(){
+  componentDidMount() {
+    notifications.startListen();
+    AppStateIOS.addEventListener('change', this._handleAppStateChange);
+    console.log('start listen state change')
+  },
+  componentWillUnmount() {
+    AppStateIOS.removeEventListener('change', this._handleAppStateChange);
     notifications.stopListen();
+    console.log('stop listen state change')
+  },
+  _handleAppStateChange(currentAppState) {
+    console.log('state change', arguments);
+    if (currentAppState === 'active' && this.state.currentAppState === 'background'){
+      notifications.popInitialNotification().then( (notification) => {
+        challenges.refresh();
+        console.log('open route', arguments);
+        // UtmanaProject.refs.router.openRoute({
+        //   name: 'Utmaning',
+        //   component: UtmaningPage,
+        //   data: action.challenge
+        // });
+      });
+    }
+    this.setState({ currentAppState : currentAppState });
   },
   render() {
     return (
@@ -42,21 +67,5 @@ var UtmanaProject = React.createClass({
     );
   }
 });
-
-
-AppDispatcher.register(function (action) {
-  switch (action.actionType) {
-    case 'notification':
-    console.log('open route', arguments);
-      // UtmanaProject.refs.router.openRoute({
-      //   name: 'Utmaning',
-      //   component: UtmaningPage,
-      //   data: action.challenge
-      // });
-    break;
-  }
-  return true;
-});
-
 
 AppRegistry.registerComponent('UtmanaProject', () => UtmanaProject);
