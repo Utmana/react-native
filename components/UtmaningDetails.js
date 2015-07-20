@@ -149,7 +149,6 @@ var UtmaningDetails = React.createClass({
             .filter(user => { return user.finished })
             .slice(0, 1)
             .map(user => {
-              console.log('user', user.finished);
               return <Text>User {user.userId} - Först att slutföra ({this.parseTimeout(moment().diff(user.finished, 'minutes'))})</Text>
             })}
 
