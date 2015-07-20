@@ -19,6 +19,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		21A18ABF1B5C708100D73B24 /* libRCTDeviceUUID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A18AB71B5C6EFE00D73B24 /* libRCTDeviceUUID.a */; };
 		57208B231AFAAD5F0052E6C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57208B221AFAAD5F0052E6C5 /* AudioToolbox.framework */; };
 		57208B251AFAAD660052E6C5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57208B241AFAAD660052E6C5 /* CFNetwork.framework */; };
 		57208B271AFAAD6E0052E6C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57208B261AFAAD6E0052E6C5 /* CoreGraphics.framework */; };
@@ -89,6 +90,13 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
+		21A18AB61B5C6EFE00D73B24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21A18AB01B5C6EFE00D73B24 /* RCTDeviceUUID.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F12AFB9B1ADAF8F800E0535D;
+			remoteInfo = RCTDeviceUUID;
+		};
 		57208B3C1AFAAE280052E6C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 57208B381AFAAE280052E6C5 /* RCTPushNotification.xcodeproj */;
@@ -121,6 +129,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = iOS/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = iOS/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		21A18AB01B5C6EFE00D73B24 /* RCTDeviceUUID.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTDeviceUUID.xcodeproj; path = "node_modules/react-native-device-uuid/RCTDeviceUUID.xcodeproj"; sourceTree = "<group>"; };
 		57208B221AFAAD5F0052E6C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		57208B241AFAAD660052E6C5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		57208B261AFAAD6E0052E6C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -171,6 +180,7 @@
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
+				21A18ABF1B5C708100D73B24 /* libRCTDeviceUUID.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +257,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		21A18AB11B5C6EFE00D73B24 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				21A18AB71B5C6EFE00D73B24 /* libRCTDeviceUUID.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		57208B391AFAAE280052E6C5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +276,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				21A18AB01B5C6EFE00D73B24 /* RCTDeviceUUID.xcodeproj */,
 				57208B541AFAB35D0052E6C5 /* ParseUI.framework */,
 				57208B381AFAAE280052E6C5 /* RCTPushNotification.xcodeproj */,
 				57208B361AFAADB80052E6C5 /* libsqlite3.dylib */,
@@ -372,6 +391,10 @@
 					ProjectRef = 00C302AF1ABCB8E700DB3ED1 /* RCTAdSupport.xcodeproj */;
 				},
 				{
+					ProductGroup = 21A18AB11B5C6EFE00D73B24 /* Products */;
+					ProjectRef = 21A18AB01B5C6EFE00D73B24 /* RCTDeviceUUID.xcodeproj */;
+				},
+				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
 					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
 				},
@@ -457,6 +480,13 @@
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		21A18AB71B5C6EFE00D73B24 /* libRCTDeviceUUID.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTDeviceUUID.a;
+			remoteRef = 21A18AB61B5C6EFE00D73B24 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		57208B3D1AFAAE280052E6C5 /* libRCTPushNotification.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -526,6 +556,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/node_modules/react-native/React/**",
+					"$(SRCROOT)/../../React/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -551,6 +582,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/node_modules/react-native/React/**",
+					"$(SRCROOT)/../../React/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
